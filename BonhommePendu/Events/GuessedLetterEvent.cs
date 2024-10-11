@@ -7,9 +7,15 @@ namespace BonhommePendu.Events
     {
         public override string EventType { get { return "GuessedLetter"; } }
 
-        // TODO: Compléter
+        // Ajouter une lettre
+        public char Letter { get; set; }
+
         public GuessedLetterEvent(GameData gameData, char letter)
         {
+            //assigner la lettre à la propriété
+            Letter = letter;
+            //ajouter la lettre à la liste du game data
+            gameData.GuessedLetters.Add(Letter);
         }
     }
 }

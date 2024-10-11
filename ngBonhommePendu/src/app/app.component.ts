@@ -86,6 +86,17 @@ export class AppComponent {
           this.gameData.guessedLetters.push(event.letter);
           break;
         }
+        //ajouter la gestion de l'événement sur le client, soit de changer la valeur du gameData.won à true
+        case "Win": {
+          this.gameData.won = true;
+          break;
+        }
+        case "Lose": {
+          this.gameData.lost = true;
+          this.wronglyGuessedWord = event.word;
+          setTimeout(() => this.hangman.showMore(), 1000);
+          break;
+        }
       }
 
       if(event.events){
