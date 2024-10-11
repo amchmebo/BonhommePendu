@@ -1,15 +1,16 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace BonhommePendu.Events
 {
-    // Les évnénements sont tous déjà enregistré, SAUF Win
-    [JsonDerivedType(typeof(GuessEvent), typeDiscriminator: "Guess")]
-    [JsonDerivedType(typeof(WrongGuessEvent), typeDiscriminator: "WrongGuess")]
-    [JsonDerivedType(typeof(RevealLetterEvent), typeDiscriminator: "RevealLetter")]
-    [JsonDerivedType(typeof(LoseEvent), typeDiscriminator: "Lose")]
-    [JsonDerivedType(typeof(GuessedLetterEvent), typeDiscriminator: "GuessedLetter")]
-    public class GameEvent
+    // Les événements sont tous déjà enregistrés, SAUF Win
+    [JsonDerivedType(typeof(GuessEvent))]
+    [JsonDerivedType(typeof(WrongGuessEvent))]
+    [JsonDerivedType(typeof(RevealLetterEvent))]
+    [JsonDerivedType(typeof(LoseEvent))]
+    [JsonDerivedType(typeof(GuessedLetterEvent))]
+    public abstract class GameEvent
     {
+        public abstract string EventType { get; }
         public List<GameEvent>? Events { get; set; }
     }
 }
